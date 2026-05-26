@@ -27,7 +27,7 @@ COPY --chown=gateway:gateway . .
 
 ENV TIKTOKEN_CACHE_DIR=/tmp/tiktoken
 
-RUN chmod +x /app/scripts/entrypoint.sh
+RUN sed -i 's/\r$//' /app/scripts/entrypoint.sh && chmod +x /app/scripts/entrypoint.sh
 
 LABEL org.opencontainers.image.title="LLM Gateway" \
       org.opencontainers.image.description="API Gateway for routing requests to multiple LLM providers" \
