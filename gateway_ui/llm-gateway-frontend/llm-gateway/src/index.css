@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #f6efe7;
+    color: #2b2b2b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    outline: 2px solid #c96a3d;
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f6efe7;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d8cdbd;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c9bfad;
+  }
+}
+
+@layer components {
+  /* Prism.js syntax highlighting — warm theme */
+  pre[class*="language-"],
+  code[class*="language-"] {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 2;
+    hyphens: none;
+    color: #2b2b2b;
+    background: #fffaf5;
+  }
+
+  pre[class*="language-"] {
+    padding: 1.25rem 1.5rem;
+    margin: 0;
+    overflow: auto;
+    border-radius: 0.5rem;
+    border: 1px solid #d8cdbd;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #9a9389;
+    font-style: italic;
+  }
+
+  .token.punctuation {
+    color: #6f6a63;
+  }
+
+  .token.namespace {
+    opacity: 0.7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #b54a3f;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #657153;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    color: #c98a3d;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #c96a3d;
+  }
+
+  .token.function,
+  .token.class-name {
+    color: #8b5a2b;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: #c96a3d;
+  }
+
+  /* Stat card shimmer loading */
+  .shimmer {
+    background: linear-gradient(90deg, #f0e8de 25%, #e8dece 50%, #f0e8de 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}

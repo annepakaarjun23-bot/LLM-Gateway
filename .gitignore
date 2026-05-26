@@ -1,0 +1,19 @@
+﻿# Dependency directories (Never push these!)
+node_modules/
+jspm_packages/
+web_modules/
+
+# Virtual Environments (Python)
+.venv/
+venv/
+ENV/
+__pycache__/
+*.pyc
+
+# Production build outputs
+dist/
+build/
+
+# Local env files containing private API keys
+.env
+.env.local
