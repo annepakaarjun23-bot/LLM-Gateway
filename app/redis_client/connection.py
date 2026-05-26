@@ -1,8 +1,7 @@
-﻿import redis.asyncio as aioredis
+﻿from upstash_redis.asyncio import Redis
 from config.settings import settings
 
-redis = aioredis.from_url(
-    settings.REDIS_URL,
-    max_connections=settings.REDIS_POOL_SIZE,
-    decode_responses=True
+redis = Redis(
+    url=settings.UPSTASH_REDIS_REST_URL, 
+    token=settings.UPSTASH_REDIS_REST_TOKEN
 )

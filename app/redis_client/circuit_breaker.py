@@ -10,10 +10,8 @@ async def is_open(provider: str) -> bool:
 
 async def record_failure(provider: str):
     key = f"provider_health:{provider}"
-    pipe = redis.pipeline(transaction=True)
-    pipe.incr(key)
-    pipe.expire(key, settings.CIRCUIT_RESET_TTL_SECONDS, nx=True)
-    await pipe.execute()
+    await redis.incr(key)
+    await redis.expire(key, settings.CIRCUIT_RESET_TTL_SECONDS)
 
 async def record_success(provider: str):
     key = f"provider_health:{provider}"

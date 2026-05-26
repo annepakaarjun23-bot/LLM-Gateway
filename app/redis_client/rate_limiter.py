@@ -10,11 +10,9 @@ async def check_and_decrement(user_id: str, weighted_cost: int) -> tuple[bool, i
     window_exists = await redis.exists(window_key)
     
     if not window_exists:
-        async with redis.pipeline(transaction=True) as pipe:
-            now_iso = datetime.utcnow().isoformat()
-            pipe.set(window_key, now_iso, ex=settings.RATE_LIMIT_WINDOW_SECONDS)
-            pipe.set(bucket_key, settings.RATE_LIMIT_BUCKET_MAX, ex=settings.RATE_LIMIT_WINDOW_SECONDS)
-            await pipe.execute()
+        now_iso = datetime.utcnow().isoformat()
+        await redis.set(window_key, now_iso, ex=settings.RATE_LIMIT_WINDOW_SECONDS)
+        await redis.set(bucket_key, settings.RATE_LIMIT_BUCKET_MAX, ex=settings.RATE_LIMIT_WINDOW_SECONDS)
             
     remaining = await redis.decrby(bucket_key, weighted_cost)
     

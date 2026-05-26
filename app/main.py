@@ -28,7 +28,7 @@ async def lifespan(app: FastAPI):
     logger.info("Shutting down LLM Gateway...")
     await ProviderFactory.close_all()
     logger.info("Provider connection pools closed.")
-    await redis.aclose()
+    await redis.close()
     logger.info("Redis connection closed.")
 
 app = FastAPI(
