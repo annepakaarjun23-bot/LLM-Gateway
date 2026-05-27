@@ -248,6 +248,3 @@ print(response.json()["choices"][0]["message"]["content"])
 ```
 
 ---
-
-
-print(f"README.md generated: {len(readme_content)} characters")
