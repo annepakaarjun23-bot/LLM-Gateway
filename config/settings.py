@@ -11,8 +11,8 @@ class Settings(BaseSettings):
     DB_POOL_MIN: int = 5
     DB_POOL_MAX: int = 20
 
-    UPSTASH_REDIS_REST_URL: str 
-    UPSTASH_REDIS_REST_TOKEN:str
+    UPSTASH_REDIS_REST_URL: str = ""
+    UPSTASH_REDIS_REST_TOKEN :str = ""
 
     RATE_LIMIT_BUCKET_MAX: int = 100000
     RATE_LIMIT_WINDOW_SECONDS: int = 18000
